@@ -1,0 +1,39 @@
+{
+    "name": "CourseDL",
+    "description": "Saves course video content for offline learning",
+    "icons": {
+      "16": "course_dl_16.png",
+      "32":"course_dl_32.png",
+      "48":"course_dl_48.png",
+      "64":"course_dl_64.png",
+      "128":"course_dl_128.png"
+    },
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions": [
+      "downloads",
+      "storage"
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16":"course_dl_16.png",
+        "32":"course_dl_32.png",
+        "48":"course_dl_48.png",
+        "64":"course_dl_64.png",
+        "128":"course_dl_128.png"
+      }
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+         {
+           "run_at": "document_idle",
+           "matches": [
+             "https://www.coursera.org/*lecture*"
+           ],
+           "js": ["content_script.js"]
+         }
+    ]
+  }
